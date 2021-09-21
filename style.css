@@ -12,8 +12,8 @@ body,
 .project,
 .index{
     font-family: 'Archivo-Regular', sans-serif;
-    font-size: 21px;
-    line-height: 1.4em;
+    font-size: 18px;
+    line-height: 1.5em;
     letter-spacing: -0.010em;
     text-align: left;
     background: #fff;
@@ -41,8 +41,8 @@ body,
 h1{
     font-family: 'Archivo-Bold', sans-serif;
     grid-column-end: 1;
-    font-size: 105px;
-    line-height: 0.89em;
+    font-size: 35px;
+    line-height: 1.1em;
     letter-spacing: -0.05em;
     padding-top: 60px;
 }
