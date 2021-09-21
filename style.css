@@ -1,0 +1,67 @@
+@font-face {
+    font-family: "Archivo-Regular";
+    src: url("fonts/Archivo-Regular.woff2") format("woff2");
+}
+
+@font-face {
+    font-family: "Archivo-Bold";
+    src: url("fonts/Archivo-Bold.woff2") format("woff2");
+}
+
+body,
+.project,
+.index{
+    font-family: 'Archivo-Regular', sans-serif;
+    font-size: 21px;
+    line-height: 1.4em;
+    letter-spacing: -0.010em;
+    text-align: left;
+    background: #fff;
+    color: black;
+    display: grid;
+    grid-template-columns: repeat(3, 300px);
+    grid-gap: 10px;
+    padding-left: 25px;
+    justify-content: center;
+}
+
+@media (min-width:424px) {
+    .body,
+    .project,
+    .index{
+        grid-template-columns: repeat(2, 300px);
+    }
+}
+
+.sticky > *{
+    top:0;
+    position: sticky;
+}
+
+h1{
+    font-family: 'Archivo-Bold', sans-serif;
+    grid-column-end: 1;
+    font-size: 105px;
+    line-height: 0.89em;
+    letter-spacing: -0.05em;
+    padding-top: 60px;
+}
+
+.description{
+    grid-row: 3;
+}
+
+img{
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
+a{
+    text-decoration: none;
+    color:currentColor;
+}
+
+a:hover{
+    color:darkblue;
+}
