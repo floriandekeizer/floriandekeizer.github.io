@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercice son</title>
+    <style>
+        svg{
+            max-width: 100%;
+            height:auto;
+            border:1px solid #ccc;
+        }
+        audio{
+            width:100%;
+        }
+    </style>
+</head>
+<body>
+    <audio src="Meydan_-_Underwater_Pt._finale.mp3" controls></audio>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
+    <script>
+    /* CODE poUr le chargement du SVG */
+    fetch("clip.svg")
+        .then(response => response.text())
+        .then(svg => {
+            document.body.insertAdjacentHTML("afterbegin", svg)
+            anim(); // on peut créer l'animation 
+    });
+
+    /* pour controler LE SON dans le HTML*/
+    const audio = document.querySelector("audio");
+    
+    /* Notre< timeline */
+    const tl = gsap.timeline();
+
+    /* function pour créer l'animation APRèS le chargement du SVG */
+    function anim(){
+        // réglages
+        tl.pause();
+        tl.set("circle,#sun", { transformOrigin: "center center", opacity: 1 });
+        tl.to('svg', {opacity:1, duration:audio.duration});
+        //tl.to("#mask", {scale:80,duration:2},1);
+        //tl.to("#txt", {scaleY:1,opacity:0,duration:2},3);
+        tl.to("#noise",{opacity:1},0);
+        tl.to("#sun", {scale:1},0);
+        tl.to("#sun", {y:900,scale:0.5,duration:2.5},0);
+        tl.to("#sun", {y:2000,scaleX:0,duration:0.3},2.5);
+        tl.to("#sea",{y:-1500,duration:5},4);
+        tl.to("#sun",{scaleX:1,y:-800,duration:4},6);
+        tl.to("#sea",{y:1000,duration:2},8);
+        tl.to("#sea",{y:-3600,duration:2},9.5);
+        tl.to("#sea",{y:2000,duration:2},11.5);
+        tl.to("#sun",{y:950,scale:1,duration:2.5},13);
+        tl.to("#sea",{y:-1700,duration:5},14); 
+        tl.to("#GO",{opacity:0,duration:2},17.5);
+        tl.to("#G1",{y:-1100,duration:9},17);
+        tl.to("#sea2",{y:-900,duration:5},23); 
+        tl.to("#sun1",{y:1100,duration:3},26);
+        tl.to("#sea2",{y:-1400,duration:3},30);
+        tl.to("#sun2",{y:700,duration:3},32);
+
+        tl.to("#sea1",{y:-1500,duration:2},36);
+        tl.to("#sea2",{y:-1900,duration:2},36);
+
+        tl.to("#sea2",{y:-1200,duration:4},43.5);
+        tl.to("#sea1",{y:800,duration:4},43.5);
+        tl.to("#sea3",{y:-2000,duration:2},45);
+        tl.to("#sea3",{y:0,duration:8},48.5);
+
+
+        tl.to("#sun2",{y:900,duration:3},37.5);
+        tl.to("#sun1",{y:1300,duration:3},37.5);
+        tl.to("#sun3",{y:750,duration:4},39);
+
+        tl.to("#sun2",{y:1200,duration:4},55);
+        tl.to("#sun3",{y:1200,duration:4},55);
+        
+
+
+        tl.to("#sun2",{y:750,duration:3},62);
+        tl.to("#sun1",{y:950,duration:3},62);
+        tl.to("#sun3",{y:850,duration:3},62);
+
+        tl.to("#sun2",{x:-200,y:850,scale:0.4,duration:1},66.5);
+        tl.to("#sun1",{x:450,y:1000,scale:0.7,duration:1},66.5);
+        tl.to("#sun3",{x:-150,y:1000,scale:0.9,duration:1},66.5);
+        tl.to("#sea2",{y:0,duration:4},70);
+
+       
+
+
+    }
+
+
+    /* OUTILS pour la lecture */
+    audio.addEventListener("play", function() {
+        let now = ( this.currentTime);
+        let dur = ( this.duration);
+        tl.progress(now/dur).play();
+    });
+
+    audio.addEventListener("pause", function() {
+        tl.pause();
+        let now = ( this.currentTime);
+        let dur = ( this.duration);
+        tl.progress(now/dur);
+    });
+
+    // seeked
+    audio.addEventListener("seeking", function(e) {
+        let now = ( this.currentTime);
+        let dur = ( this.duration);
+        tl.progress(now/dur).pause();
+    });
+
+
+
+    </script>
+</body>
+</html>
